@@ -1,4 +1,4 @@
-package com.example.ej2crud.config;
+package com.example.ej2crud.configuration;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
