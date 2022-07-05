@@ -18,4 +18,5 @@ public class ListPersonUseCase extends PersonUseCase {
         List<Person> personList= this.personRepository.findAll();
         return this.serialize(personList);
     }
+
 }

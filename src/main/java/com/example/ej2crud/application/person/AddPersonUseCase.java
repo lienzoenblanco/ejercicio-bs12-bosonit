@@ -34,4 +34,5 @@ public class AddPersonUseCase extends PersonUseCase {
         this.personRepository.saveAndFlush(person);
         return new ResponseDto(true, "El usuario "+inputPersonDto.getUser()+" ha sido creado");
     }
+
 }

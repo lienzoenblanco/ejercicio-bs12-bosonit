@@ -20,7 +20,7 @@ public class PersonController {
     @Autowired
     private AddPersonUseCase addPersonUseCase;
     @PostMapping
-    public ResponseEntity add(@RequestBody InputPersonDto inputPersonDto) {
+    public ResponseEntity add(@RequestBody InputPersonDto inputPersonDto){
         ResponseDto responseDto = this.addPersonUseCase.add(inputPersonDto);
         if (!responseDto.getSuccess()) {
             return new ResponseEntity<>(responseDto,HttpStatus.BAD_REQUEST);
@@ -28,11 +28,24 @@ public class PersonController {
         return new ResponseEntity<>(responseDto,HttpStatus.CREATED);
     }
 
+    @CrossOrigin(origins = "https://cdpn.io")
+    @PostMapping("/addperson")
+    public ResponseEntity createdPerson(@RequestBody InputPersonDto inputPersonDto){
+        ResponseDto responseDto = this.addPersonUseCase.add(inputPersonDto);
+        return new ResponseEntity(responseDto, HttpStatus.CREATED);
+    }
+
 
     @Autowired
     private ListPersonUseCase listPersonUseCase;
     @GetMapping
-    public List<OutputPersonDto> list() {
+    public List<OutputPersonDto> list(){
+        return this.listPersonUseCase.list();
+    }
+
+    @CrossOrigin(origins = "https://cdpn.io")
+    @GetMapping("/getall")
+    public List<OutputPersonDto> listPerson(){
         return this.listPersonUseCase.list();
     }
 
